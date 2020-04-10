@@ -1,3 +1,7 @@
+> **DEPRECATED**
+> This repository is outdated for very long time. But this may give you an idea of what to do. Using with your own risks.
+> For more complicated validation, I recommend to use https://github.com/giggsey/libphonenumber-for-php instead.
+
 Code snippets dành cho việc nhận diện đầu số di động
 
 ### Nhận diện số di động
