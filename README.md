@@ -12,17 +12,23 @@ Regex để nhận diện số điện thoại dạng này là: `/^0[0-9]{8}$/`.
 
 Thông thường số điện thoại thường được nhập với ký tự `-`, `.`, `[Space]` vì vậy cần loại bỏ những ký tự này trước khi nhận diện. Ví dụ (PHP):
 ```php
+<?php
 $number = str_replace(array('-', '.', ' '), '', $number);
+?>
 ```
 Và sau đó nhận dạng regex:
 ```php
+<?php
 // return false if number is not mobile number
 if (!preg_match('/^0[0-9]{8}$/', $number)) return false;
+?>
 ```
 ### Nhận diện tên nhà mạng
 
 Array chứa danh sách các nhà mạng (copy-paste):
 ```php
+<?php
+
 $carriers_number = [
    '096' => 'Viettel',
    '097' => 'Viettel',
@@ -60,10 +66,14 @@ $carriers_number = [
 
    '095'  => 'SFone'
 ];
+
+?>
 ```
 
 Kiểm tra 1 `string` có bắt đầu bằng 1 `string` khác hay không:
 ```php
+<?php
+
 /**
  * Check if a string is started with another string
  *
@@ -75,10 +85,14 @@ function start_with($needle, $haystack) {
     $length = strlen($needle);
     return (substr($haystack, 0, $length) === $needle);
 }
+
+?>
 ```
 
 OK, bắt đầu search:
 ```php
+<?php
+
 /**
  * Detect carrier name by phone number
  *
@@ -104,10 +118,14 @@ function detect_number ($number) {
     // if not found, return false
     return false;
 }
+
+?>
 ```
 
 Done. Kết quả mong đợi là:
 ```php
+<?php
+
 $number = '0987654321';
 $carrier = detect_number($number);
 echo $carrier // Viettel
@@ -115,6 +133,8 @@ echo $carrier // Viettel
 $wrong_number = '9876543210';
 $carrier = detect_number($wrong_number);
 echo $carrier; // false
+
+?>
 ```
 
 Hope this help.
