@@ -60,7 +60,7 @@ function detect_number ($number) {
     $number = str_replace(array('-', '.', ' '), '', $number);
 
     // $number is not a phone number
-    if (!preg_match('/^0[0-9]{8}$/', $number)) return false;
+    if (!preg_match('/^0[0-9]{9,10}$/', $number)) return false;
 
     // Store all start number in an array to search
     $start_numbers = array_keys($GLOBALS["carriers_number"]);
