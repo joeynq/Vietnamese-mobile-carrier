@@ -8,7 +8,7 @@ Code snippets dành cho việc nhận diện đầu số di động
 
 Từ 15/11/2018, số di động chỉ có 10 số và bắt đầu bằng 03, 05, 07, 08, 09.
 
-Regex để nhận diện số điện thoại dạng này là: `/^0[0-9]{8}$/`.
+Regex để nhận diện số điện thoại dạng này là: `/^0[0-9]{9,10}$/`.
 
 Thông thường số điện thoại thường được nhập với ký tự `-`, `.`, `[Space]` vì vậy cần loại bỏ những ký tự này trước khi nhận diện. Ví dụ (PHP):
 ```php
@@ -20,7 +20,7 @@ Và sau đó nhận dạng regex:
 ```php
 <?php
 // return false if number is not mobile number
-if (!preg_match('/^0[0-9]{8}$/', $number)) return false;
+if (!preg_match('/^0[0-9]{9,10}$/', $number)) return false;
 ?>
 ```
 ### Nhận diện tên nhà mạng
@@ -103,7 +103,7 @@ function detect_number ($number) {
     $number = str_replace(array('-', '.', ' '), '', $number);
 
     // $number is not a phone number
-    if (!preg_match('/^0[0-9]{8}$/', $number)) return false;
+    if (!preg_match('/^0[0-9]{9,10}$/', $number)) return false;
 
     // Store all start number in an array to search
     $start_numbers = array_keys($GLOBALS["carriers_number"]);
